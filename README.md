@@ -1,2 +1,2 @@
 # BinoRunner
-Binocular version of Distance Task
+Binocular version
