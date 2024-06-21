@@ -57,7 +57,8 @@ def doColorCalibration(ID=None, task=None, location=None):
 
     filename = ID.lower() + '_col_cal_'
 
-    glasses = 'RG' # NO CHOICE !
+    # glasses = 'RG' # NO CHOICE !
+    glasses = 'RB'
 
 
     # colors will come from the localizeSetup function, depending on things
@@ -311,7 +312,8 @@ def doBlindSpotMapping(ID=None,task=None,location=None):
     print(location)
     print(step)
 
-    glasses = 'RG'
+    # glasses = 'RG'
+    glasses = 'RB'
     trackEyes = [False, False]
 
 
