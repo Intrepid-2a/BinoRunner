@@ -59,7 +59,7 @@ class MyFrame(wx.Frame):
 
         self.dist_count = wx.StaticText(self, -1, "#")
         self.dist_text = wx.StaticText(self, -1, "DISTANCE:")
-        # self.dist_color = wx.Button(self, -1, "color")
+        self.dist_color = wx.Button(self, -1, "color")
         self.dist_mapping = wx.Button(self, -1, "mapping")
         self.dist_left = wx.Button(self, -1, "left")
         self.dist_right = wx.Button(self, -1, "right")
@@ -91,7 +91,7 @@ class MyFrame(wx.Frame):
         self.Bind(wx.EVT_BUTTON, self.generateRandomID, self.random_generate)
 
         # task button functionality:
-        # self.Bind(wx.EVT_BUTTON, self.runTask, self.dist_color)
+        self.Bind(wx.EVT_BUTTON, self.runTask, self.dist_color)
         self.Bind(wx.EVT_BUTTON, self.runTask, self.dist_mapping)
         self.Bind(wx.EVT_BUTTON, self.runTask, self.dist_left)
         self.Bind(wx.EVT_BUTTON, self.runTask, self.dist_right)
@@ -171,7 +171,7 @@ class MyFrame(wx.Frame):
 
         taskrun_grid.Add(self.dist_count, -1, wx.ALIGN_LEFT, 0)
         taskrun_grid.Add(self.dist_text, -1, wx.ALIGN_LEFT, 0)
-        # taskrun_grid.Add(self.dist_color, -1, wx.ALIGN_LEFT, 0)
+        taskrun_grid.Add(self.dist_color, -1, wx.ALIGN_LEFT, 0)
         taskrun_grid.Add(self.dist_mapping, -1, wx.ALIGN_LEFT, 0)
         taskrun_grid.Add(self.dist_left, -1, wx.ALIGN_LEFT, 0)
         taskrun_grid.Add(self.dist_right, -1, wx.ALIGN_LEFT, 0)
@@ -215,7 +215,7 @@ class MyFrame(wx.Frame):
 
 
     def generateRandomID(self, event):
-        newID = generateRandomParticipantID(prepend=self.location.lower()[:3]+'p', nbytes=3)
+        newID = generateRandomParticipantID(prepend=self.location.lower()[:3]+'b', nbytes=3)
         self.participantID.SetValue(newID)
         self.toggleParticipantTaskButtons(event)
 
@@ -274,8 +274,8 @@ class MyFrame(wx.Frame):
         # if buttonId in [self.curve_color.Id, self.curve_mapping.Id, self.curve_left.Id, self.curve_right.Id]:
         #     task = 'curvature'
 
-        # if buttonId in [self.dist_color.Id,   self.area_color.Id,   self.curve_color.Id]:
-        #     subtask = 'color'
+        if buttonId in [self.dist_color.Id,   self.area_color.Id,   self.curve_color.Id]:
+            subtask = 'color'
         # if buttonId in [self.dist_mapping.Id, self.area_mapping.Id, self.curve_mapping.Id]:
         if buttonId in [self.dist_mapping.Id]:
             subtask = 'mapping'
@@ -295,10 +295,10 @@ class MyFrame(wx.Frame):
         
         print([task, subtask])
 
-        # if subtask == 'color':
-        #     # print('do color calibration')
-        #     doColorCalibration(ID=self.participantID.GetValue(), task=task, location=self.location)
-        #     return
+        if subtask == 'color':
+            # print('do color calibration')
+            doColorCalibration(ID=self.participantID.GetValue(), task=task, location=self.location)
+            return
 
         if subtask == 'mapping':
             # print('do blind spot mpapping')
