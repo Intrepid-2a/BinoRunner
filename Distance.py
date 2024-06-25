@@ -140,7 +140,7 @@ def doDistanceTask(ID=None, hemifield=None, location=None):
     #     x += 1
 
     # get everything shared from central:
-    setup = localizeSetup(location=location, trackEyes=[False,False], filefolder=None, filename=None, task='distance', ID=ID) # data path is for the mapping data, not the eye-tracker data!
+    setup = localizeSetup(location=location, glasses='RG', trackEyes=[False,False], filefolder=None, filename=None, task='distance', ID=ID) # data path is for the mapping data, not the eye-tracker data!
 
     print(setup['paths']) # not using yet, just testing
 
