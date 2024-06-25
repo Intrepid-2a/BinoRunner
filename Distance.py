@@ -75,7 +75,7 @@ def doDistanceTask(ID=None, hemifield=None, location=None):
             location = 'glasgow'
 
 
-    random.seed(ID+'distance')
+    random.seed(ID+'distance'+hemifield)
 
     # trackEyes = [True, True]
 
@@ -153,12 +153,13 @@ def doDistanceTask(ID=None, hemifield=None, location=None):
 
     colors = setup['colors']
     col_both = colors['both']
+
     # if hemifield == 'left':
     #     col_ipsi, col_contra = colors['left'], colors['right']
     # if hemifield == 'right':
     #     col_contra, col_ipsi = colors['left'], colors['right']
 
-    col_ipsi, col_contra = colors['both'], colors['both']
+    # col_ipsi, col_contra = colors['both'], colors['both']
 
     # if hemifield == 'left':
     #     col_ipsi, col_contra = colors['right'], colors['left']
@@ -167,10 +168,14 @@ def doDistanceTask(ID=None, hemifield=None, location=None):
 
     # print(colors)
 
+    col_left, col_right = colors['left'], colors['right']
+
     hiFusion = setup['fusion']['hi']
     loFusion = setup['fusion']['lo']
 
-    blindspot = setup['blindspotmarkers'][hemifield]
+    blindspot_left  = setup['blindspotmarkers']['left']
+    blindspot_right = setup['blindspotmarkers']['right']
+
     # print(blindspot.fillColor)
     
     fixation = setup['fixation']
@@ -459,7 +464,8 @@ def doDistanceTask(ID=None, hemifield=None, location=None):
                 #     break
 
                 fixation.draw()
-                blindspot.draw()
+                blindspot_left.draw()
+                blindspot_right.draw()
                 hiFusion.draw()
                 loFusion.draw()
 
@@ -481,7 +487,7 @@ def doDistanceTask(ID=None, hemifield=None, location=None):
                     point_3.draw()
                     point_4.draw()
         
-                blindspot.draw()
+                # blindspot_left.draw()
                 win.flip()
                 
                 k = event.getKeys(['q']) # shouldn't this be space? like after the stimulus? this is confusing...
@@ -568,8 +574,7 @@ def doDistanceTask(ID=None, hemifield=None, location=None):
             #         break
             #         #! empty buffer?
                 
-            #     event.clearEvents(eventType='keyboard') # just to be sur           Targ_shift = shift[0]
- e?
+            #     event.clearEvents(eventType='keyboard') # just to be sure?
             
             # # changing fixation to signify gaze out, restart with 'up' possibily of break and manual recalibration 'r' 
             # else:
@@ -635,8 +640,7 @@ def doDistanceTask(ID=None, hemifield=None, location=None):
             reversal = False
             resps[which_stair] = resps[which_stair] + [targ_chosen]
             if  resps[which_stair][-2] != resps[which_stair][-1]:
-                reversal = True           Targ_shift = shift[0]
- 
+                reversal = True
                 direction[which_stair] *= -1
                 revs[which_stair] += len(resps[which_stair]) > 2
                 
