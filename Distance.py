@@ -740,7 +740,7 @@ def doDistanceTask(ID=None, hemifield=None, location=None):
         print('run ended properly!')
 
     print(datetime.datetime.now().strftime("%Y-%m-%d-%H-%M"))
-    blindspot.autoDraw = False
+    # blindspot.autoDraw = False
 
     #!!# stop recording
 
