@@ -1687,8 +1687,8 @@ def getColors(colors={}, task=None, ID=None):
     # col_cont = eval(col_param[5]) if hemifield == 'left' else eval(col_param[3]) # right or left
 
     # so use the left / right things for now
-    colors['left']  = eval(col_param[3])
-    colors['right'] = eval(col_param[5])
+    colors['left']  = eval(col_param[5])
+    colors['right'] = eval(col_param[3])
 
     # 'both' should be defined in 1 way... up for grabs how, afaic
     # colors['both']  = [-0.7, -0.7, -0.7] # from 2nd FBE version of the distance task
@@ -1769,8 +1769,7 @@ def makeBlindSpotMarkers(win, task, ID, colors):
         print(spot_size)
 
 
-        # blindspotmarkers[hemifield] = visual.Circle(win, radius = .5, pos = [7,0], units = 'deg', fillColor=colors[hemifield], lineColor = None)
-        blindspotmarkers[hemifield] = visual.Circle(win, radius = .5, pos = [7,0], units = 'deg', fillColor=colors['both'], lineColor = None)
+        blindspotmarkers[hemifield] = visual.Circle(win, radius = .5, pos = [7,0], units = 'deg', fillColor=colors[hemifield], lineColor = None)
         blindspotmarkers[hemifield].pos = spot_cart
         blindspotmarkers[hemifield].size = spot_size
 
